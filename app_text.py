@@ -15,12 +15,15 @@ client = genai.Client(api_key=clave_api)
 try:
     response = client.models.generate_content(
         model="gemini-3-flash-preview",
-        contents="""Actualiza el nombre Juan por Ing. Leandro y 
-        el cargo Docente por Consultor en el siguiente texto:
-
-        'Leandro es un Docente con amplia experiencia en el campo de la educación.
-        Ha trabajado en el sector prvado y público, como gerente de proyectos.'
-        """
+        contents="""Eres  un clasificador de tickets. sigue el formato de los ejemplos:
+        Usuario: 'No puedo entrar a mi cuenta.'
+            Ticket: [CATEGORÍA: Acceso] [PRIORIDAD: Alta]
+            Usuario: 'El botón de compra es azul y debería ser verde.'
+            Ticket: [CATEGORÍA: UI/UX] [PRIORIDAD: Baja]
+            Usuario: 'La base de datos se cayó y nadie puede trabajar.'
+            Ticket: [CATEGORÍA: Infraestructura] [PRIORIDAD: Crítica]
+            Usuario: 'No puedo ingrear al aula virtual'
+            Ticket:"""
     )
 except Exception as e:
     print(f"❌ Ocurrió un error en la conexión: {e}")
